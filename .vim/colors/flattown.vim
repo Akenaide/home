@@ -11,7 +11,7 @@ let g:colors_name = "flattown"
 
 hi Cursor guifg=#262626 guibg=#d7ffff guisp=#d7ffff gui=NONE ctermfg=235 ctermbg=195 cterm=NONE
 hi Ignore guifg=#60666b guibg=NONE guisp=NONE gui=NONE ctermfg=242 ctermbg=NONE cterm=NONE
-hi VertSplit guifg=#444444 guibg=#444444 guisp=#444444 gui=NONE ctermfg=238 ctermbg=238 cterm=NONE
+hi VertSplit guifg=#422244 guibg=#443444 guisp=#444444 gui=NONE ctermfg=248 ctermbg=238 cterm=NONE
 hi NonText guifg=#949494 guibg=NONE guisp=NONE gui=NONE ctermfg=246 ctermbg=NONE cterm=NONE
 
 hi Normal guifg=#e0e0e0 guibg=#26292c guisp=#26292c gui=NONE ctermfg=254 ctermbg=235 cterm=NONE
@@ -77,7 +77,8 @@ hi Debug guifg=#f8f8f8 guibg=NONE guisp=NONE gui=NONE ctermfg=15 ctermbg=NONE ct
 hi PMenuSbar guifg=#cdcecf guibg=#35393e guisp=#35393e gui=NONE ctermfg=252 ctermbg=237 cterm=NONE
 hi SpecialChar guifg=#f8f8f8 guibg=NONE guisp=NONE gui=NONE ctermfg=15 ctermbg=NONE cterm=NONE
 hi StorageClass guifg=#f6f080 guibg=NONE guisp=NONE gui=NONE ctermfg=228 ctermbg=NONE cterm=NONE
-hi StatusLine guifg=#f8f8f8 guibg=#292c2f guisp=#292c2f gui=bold ctermfg=15 ctermbg=236 cterm=bold
+" hi StatusLine guifg=#f8f8f8 guibg=#292c2f guisp=#292c2f gui=bold ctermfg=15 ctermbg=236 cterm=bold
+hi StatusLine guifg=#f8f8f8 guibg=#78AB46 guisp=#292c2f gui=bold ctermfg=25 ctermbg=236 cterm=bold
 hi Label guifg=#f6f6f6 guibg=NONE guisp=NONE gui=NONE ctermfg=255 ctermbg=NONE cterm=NONE
 "hi CTagsImport -- no settings --
 hi PMenuSel guifg=#ffffff guibg=#3498DB guisp=#3498DB gui=bold ctermfg=15 ctermbg=74 cterm=bold
@@ -121,4 +122,4 @@ hi MatchParen guifg=#26292c guibg=#fa9a4b guisp=#fa9a4b gui=underline ctermfg=23
 hi Structure guifg=#72aaca guibg=NONE guisp=NONE gui=NONE ctermfg=110 ctermbg=NONE cterm=NONE
 hi Underlined guifg=NONE guibg=NONE guisp=NONE gui=underline ctermfg=NONE ctermbg=NONE cterm=underline
 hi DiffAdd guifg=#f8f8f8 guibg=#487a1a guisp=#487a1a gui=bold ctermfg=15 ctermbg=2 cterm=bold
-hi TabLine guifg=#797a7b guibg=#212325 guisp=#212325 gui=NONE ctermfg=8 ctermbg=235 cterm=NONE
+hi TabLine guifg=#797a7b guibg=#212325 guisp=#212325 gui=NONE ctermfg=50 ctermbg=235 cterm=NONE
