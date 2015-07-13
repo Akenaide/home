@@ -1,6 +1,7 @@
 export DISPLAY=:0.0
 export PATH=$PATH:${HOME}/bin
 export GIT_COMMITTER_NAME="$USER"
+export FZF_DEFAULT_COMMAND='pt -l -g .'
 # To the extent possible under law, the author(s) have dedicated all 
 # copyright and related and neighboring rights to this software to the 
 # public domain worldwide. This software is distributed without any warranty. 
@@ -203,4 +204,21 @@ alias ls='ls -hF --color=tty'                 # classify files in colour
 function title {
     echo -en "\033]2;$1\007"
 }
-PS1="\[\033[00;34m\]{ \[\033[01;34m\]\w \[\033[00;34m\]}\[\033[01;32m\] \$( git rev-parse --abbrev-ref HEAD 2> /dev/null || echo "" )\[\033[01;31m\]\n » \[\033[00m\]"
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+# PS1="\[\033[00;34m\]{ \[\033[01;34m\]\w \[\033[00;34m\]}\[\033[01;32m\] \$( git rev-parse --abbrev-ref HEAD 2> /dev/null || echo "" )\[\033[01;31m\]\n » \[\033[00m\]"
