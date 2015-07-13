@@ -37,8 +37,8 @@ set rtp+=~/.fzf
 set guifont=monospace\ 11                   " Police de caractère monospace
 
 nnoremap H :set cursorline! <CR>
+nnoremap <silent> <C-O> :FZF -m<CR>
 
-nmap <C-O> :FZF<CR>
 " set ruler 
 " hi  CursorLine   cterm=NONE ctermbg=darkgreen ctermfg=white guibg=darkred guifg=white
 
