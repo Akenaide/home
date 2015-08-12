@@ -68,7 +68,7 @@ hi Typedef guifg=#72aaca guibg=NONE guisp=NONE gui=NONE ctermfg=110 ctermbg=NONE
 hi Title guifg=#f8f8f8 guibg=NONE guisp=NONE gui=bold ctermfg=15 ctermbg=NONE cterm=bold
 hi Folded guifg=#798188 guibg=#26292c guisp=#26292c gui=NONE ctermfg=66 ctermbg=236 cterm=NONE
 hi PreCondit guifg=#ffb454 guibg=NONE guisp=NONE gui=NONE ctermfg=215 ctermbg=NONE cterm=NONE
-hi StatusLineNC guifg=#b8b8b8 guibg=#292c2f guisp=#292c2f gui=NONE ctermfg=250 ctermbg=236 cterm=NONE
+hi StatusLineNC guifg=#b8b8b8 guibg=#292444 guisp=#292c2f gui=NONE ctermfg=250 ctermbg=239 cterm=NONE
 "hi CTagsMember -- no settings --
 "hi CTagsGlobalConstant -- no settings --
 hi DiffText guifg=NONE guibg=#2E4052 guisp=#2E4052 gui=bold ctermfg=NONE ctermbg=239 cterm=bold
