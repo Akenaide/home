@@ -8,3 +8,15 @@ line.gsub! '\\', '/'
 ```
 
  in `format` function, line 466 (may change)
+
+
+TagBar reqs
+----
+Download : http://ctags.sourceforge.net/
+
+Steps : 
+```
+./configure
+make
+mv to $PATH
+```
