@@ -27,3 +27,13 @@ Vim plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
+
+Homemaker
+----
+https://github.com/FooSoft/homemaker
+
+```
+${HM_PATH} home/homemaker.tml home/
+```
+
+Homemaker will create symlink in the new home for each file specify in homemaker.tml

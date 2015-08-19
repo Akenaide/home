@@ -1,0 +1,13 @@
+[tasks.default]
+    cmds = [
+        ["mkdir", "${HM_DEST}/vimtmp"],
+        ["curl", "-fLo", "${HM_DEST}/.vim/autoload/plug.vim", "--create-dirs", "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"],
+    ]
+    links = [
+        [".gitconfig"],
+        [".tmux.conf"],
+        [".vimrc"],
+        # [".bashrc"],
+        [".bash_aliases"],
+        [".git-completion.bash.sh"],
+    ]
