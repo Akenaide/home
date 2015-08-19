@@ -1,6 +1,7 @@
 [tasks.default]
+    deps = ["tools"]
     cmds = [
-        ["mkdir", "${HM_DEST}/vimtmp"],
+        ["mkdir", "-p", "${HM_DEST}/vimtmp"],
         ["curl", "-fLo", "${HM_DEST}/.vim/autoload/plug.vim", "--create-dirs", "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"],
     ]
     links = [
@@ -10,4 +11,15 @@
         # [".bashrc"],
         [".bash_aliases"],
         [".git-completion.bash.sh"],
+    ]
+
+[tasks.tools]
+    deps = ["pt"]
+
+[tasks.pt]
+    cmds = [
+        ["mkdir", "-p", "${HM_DEST}/bin"],
+        ["wget", "https://github.com/monochromegane/the_platinum_searcher/releases/download/v1.7.8/pt_linux_amd64.tar.gz", "-P", "${HM_DEST}/bin/", ],
+        ["tar", "-xf", "${HM_DEST}/bin/pt_linux_amd64.tar.gz", "-C", "${HM_DEST}/bin/"],
+        ["ln", "-s", "${HM_DEST}/bin/pt_linux_amd64/pt", "${HM_DEST}/bin/"],
     ]
