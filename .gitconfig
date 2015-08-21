@@ -28,9 +28,13 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
         sm = submodule
         lt = describe --tags `git rev-list --tags --max-count=1`
+
 [push]
 	default = simple
-[user]
+
 [user]
         name = Akenaide
         email = kevinms1@gmail.com
+
+[include]
+    path = ~/.gitconfig.local
