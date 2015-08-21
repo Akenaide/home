@@ -120,3 +120,11 @@ else
 	alias agent=cygwinagent
 
 fi
+
+# ############################################################################
+# add user customisations of aliases / shell functions
+# ############################################################################
+if [ -f ~/.bash_aliases.local ]; then
+    . ~/.bash_aliases.local
+fi
+
