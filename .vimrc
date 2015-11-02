@@ -56,9 +56,17 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/seoul256.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimproc.vim'
 call plug#end()
  
 syntax enable
 " colorscheme flattown
 colorscheme seoul256
-map <silent> <F5> <Esc>:let @/=''<CR>a
+nnoremap <silent> <F2> :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+if executable('pt')
+    let g:unite_source_grep_command = 'pt'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+    let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_encoding = 'utf-8'
+endif
