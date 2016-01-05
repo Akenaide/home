@@ -58,6 +58,10 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/seoul256.vim'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim'
+Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/vim-oblique'
+Plug 'junegunn/vim-fnr'
+Plug 'tpope/vim-commentary'
 call plug#end()
  
 syntax enable
