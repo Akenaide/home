@@ -10,11 +10,9 @@ set sw=4
 set expandtab
 set wildmode=longest,list,full
 set number
-set smartindent
 set ai
 set backspace=2
 set mouse=nv
-set fdm=indent
 set ruler
 
 if has("gui_running")
@@ -64,6 +62,7 @@ Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-fnr'
 Plug 'tpope/vim-commentary'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'tweekmonster/braceless.vim'
 call plug#end()
  
 syntax enable
@@ -78,3 +77,4 @@ if executable('pt')
 endif
 
 let g:ycm_autoclose_preview_window_after_completion = 1
+autocmd FileType python BracelessEnable +indent +fold-inner +highlight
