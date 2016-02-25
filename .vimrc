@@ -54,6 +54,7 @@ nnoremap <silent> <C-O> :FZF -m<CR>
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/seoul256.vim'
 Plug 'Shougo/unite.vim'
