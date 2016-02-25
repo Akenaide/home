@@ -63,6 +63,7 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-fnr'
 Plug 'tpope/vim-commentary'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 call plug#end()
  
 syntax enable
@@ -75,3 +76,5 @@ if executable('pt')
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_grep_encoding = 'utf-8'
 endif
+
+let g:ycm_autoclose_preview_window_after_completion = 1
