@@ -1,5 +1,6 @@
 export DISPLAY=:0.0
 export PATH=$PATH:${HOME}/bin
+export GOPATH=~/work/go
 export GIT_COMMITTER_NAME="$USER"
 export FZF_DEFAULT_COMMAND='pt -l -g .'
 # To the extent possible under law, the author(s) have dedicated all 

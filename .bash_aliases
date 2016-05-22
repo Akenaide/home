@@ -31,6 +31,7 @@ alias cdbs='cdw; cd buildslave'
 alias cdh="cd /cygdrive/c/Users/Ake"
 alias cdzim="cdh; cd Notebooks/zim"
 alias cdp="cd /cygdrive/c/Python27/"
+alias cdgo='cd $GOPATH/src/github.com/Akenaide'
 
 alias xt="xterm &"
 

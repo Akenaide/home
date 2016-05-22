@@ -61,8 +61,9 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-fnr'
 Plug 'tpope/vim-commentary'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
 Plug 'tweekmonster/braceless.vim'
+Plug 'fatih/vim-go'
 call plug#end()
  
 syntax enable
