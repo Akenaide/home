@@ -14,7 +14,7 @@
     ]
 
 [tasks.tools]
-    deps = ["pt"]
+    deps = ["pt", "gn"]
 
 [tasks.pt]
     cmds = [
@@ -22,4 +22,16 @@
         ["wget", "https://github.com/monochromegane/the_platinum_searcher/releases/download/v1.7.8/pt_linux_amd64.tar.gz", "-P", "${HM_DEST}/bin/", ],
         ["tar", "-xf", "${HM_DEST}/bin/pt_linux_amd64.tar.gz", "-C", "${HM_DEST}/bin/"],
         ["ln", "-s", "${HM_DEST}/bin/pt_linux_amd64/pt", "${HM_DEST}/bin/"],
+    ]
+
+[tasks.gn]
+    envs = [
+        ["GNPATH", "${HM_DEST}/bin/gn"],
+    ]
+    cmds = [
+        ["mkdir", "-p", "${HM_DEST}/bin"],
+        ["git", "clone", "https://github.com/holygeek/git-number.git", "${GNPATH}"],
+        ["ln", "-s", "${GNPATH}/git-id", "${HM_DEST}/bin/git-id"],
+        ["ln", "-s", "${GNPATH}/git-list", "${HM_DEST}/bin/git-list"],
+        ["ln", "-s", "${GNPATH}/git-number", "${HM_DEST}/bin/git-number"],
     ]
