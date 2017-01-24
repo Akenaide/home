@@ -37,3 +37,12 @@ ${HM_PATH} home/homemaker.tml home/
 ```
 
 Homemaker will create symlink in the new home for each file specify in homemaker.tml
+
+
+Weird color for fish in tmumx
+----
+
+Create an alias tmux = tmux -2
+
+Or add this to .tmux.conf
+set-option -g default-terminal "screen-256color"
