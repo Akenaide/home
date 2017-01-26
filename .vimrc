@@ -4,7 +4,7 @@ filetype indent plugin on
 
 set t_Co=256
 set nocompatible
-set ts=8
+set ts=4
 set sts=4
 set sw=4
 set expandtab
@@ -51,7 +51,7 @@ imap <silent> <F5> <Esc>:let @/=''<CR>a
 nnoremap <silent> <C-O> :FZF -m<CR>
 
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/seoul256.vim'
@@ -64,6 +64,8 @@ Plug 'tpope/vim-commentary'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
 Plug 'tweekmonster/braceless.vim'
 Plug 'fatih/vim-go'
+Plug 'pangloss/vim-javascript'
+Plug 'csexton/trailertrash.vim'
 call plug#end()
  
 syntax enable
@@ -78,4 +80,6 @@ if executable('pt')
 endif
 
 let g:ycm_autoclose_preview_window_after_completion = 1
-autocmd FileType python BracelessEnable +indent +fold-inner +highlight
+" autocmd FileType python BracelessEnable +indent +highlight
+map <C-F2> <F2><C-R><C-W><CR>
+au FileType go nmap <leader>i <Plug>(go-install)
