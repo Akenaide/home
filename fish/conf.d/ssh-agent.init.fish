@@ -1,0 +1,1 @@
+/home/kms/.config/fisherman/ssh-agent/init.fish
