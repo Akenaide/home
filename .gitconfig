@@ -1,3 +1,37 @@
+[alias]
+    alias = ! git config --list | sed -n 's/^alias.//p'
+    st = status | more
+    ci = commit
+    ciam = commit --amend
+    st = status
+    cia = commit -a
+    co = checkout
+    cp = cherry-pick
+    tree = log --graph
+    lg = log --name-status
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+    lstags = describe --tags
+    b = branch
+    bhlp = branch --help
+    ba = branch -a
+    ls = ls-tree -r master
+    rebasei = rebase --interactive
+    rbi = rebase --interactive
+    mkb = !sh -c 'git checkout --track -b $1 origin/$1' -
+    diffs=diff --name-only
+    sm= submodule
+    ap=add -p
+    dc= diff --cached
+    edit = "!vim `git ls-files -m` -p"
+    usprint = "! git fetch && git merge `git b -a | grep sprint | tail -1 | sed 's/remotes\\///' $1`"
+	last = log -1 --stat
+	cl = clone
+	unstage = reset HEAD --
+    lt = describe --tags `git rev-list --tags --max-count=1`
+
+[diff]
+    ignoreSubmodules = untracked
+
 [core]
 	editor = vim
 	filemode = false
@@ -14,20 +48,6 @@
 	keepbackups = false
 	prompt = false
 	trustexitcode = false
-[alias]
-	last = log -1 --stat
-        ap = add -p
-	cp = cherry-pick
-	co = checkout
-	cl = clone
-	ci = commit
-	st = status
-	b = branch
-	unstage = reset HEAD --
-	dc = diff --cached
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
-        sm = submodule
-        lt = describe --tags `git rev-list --tags --max-count=1`
 
 [push]
 	default = simple
