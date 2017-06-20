@@ -38,7 +38,7 @@
 [color]
 	ui = true
 [credential]
-	helper = cache --timeout=3600
+	helper = store
 [merge]
 	tool = gvimdiff
 [grep]
@@ -50,7 +50,7 @@
 	trustexitcode = false
 
 [push]
-	default = simple
+	default = current
 
 [user]
         name = Akenaide
@@ -58,3 +58,9 @@
 
 [include]
     path = ~/.gitconfig.local
+[url "mhgitsrv:gitsrc/"]
+	insteadOf = mhgitold://
+[url "mhgitlab:"]
+	insteadOf = mhgit://
+[url "https://git.mhcomm.fr/"]
+	insteadOf = mhgitweb://
