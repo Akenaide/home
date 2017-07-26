@@ -34,6 +34,7 @@ alias cdp="cd /cygdrive/c/Python27/"
 alias cdgo='cd $GOPATH/src/github.com/Akenaide'
 
 alias xt="xterm &"
+alias startandroid="LD_PRELOAD='/usr/lib/x86_64-linux-gnu/libstdc++.so.6' Android/Sdk/emulator/emulator @N5X"
 
 alias gitb='git branch'
 alias gitba='git branch -a'
