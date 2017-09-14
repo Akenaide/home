@@ -10,7 +10,7 @@ set -x TERM "xterm-256color"
 # To compile python with dynamic, madatory for Youcompleteme
 set -x PYTHON_CONFIGURE_OPTS "--enable-shared"
 
-# set PATH $HOME/.fzf/bin /home/nginx/bin /usr/local/go/bin $GOPATH/bin /usr/lib/dart/bin $PATH
+set PATH $HOME/.fzf/bin $HOME/bin $GOPATH/bin /opt/go/bin /opt/dart/bin $PATH
 
 # status --is-interactive; and . (pyenv init -|psub)
 # status --is-interactive; and . (pyenv virtualenv-init -|psub)

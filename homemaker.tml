@@ -2,7 +2,6 @@
     deps = ["tools"]
     cmds = [
         ["mkdir", "-p", "${HM_DEST}/vimtmp ${HM_DEST}/.config/{fish, nvim}"],
-        ["curl", "-fLo", "${HM_DEST}/.vim/autoload/plug.vim", "--create-dirs", "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"],
     ]
     links = [
         [".gitconfig"],
@@ -20,7 +19,7 @@
     ]
 
 [tasks.tools]
-    deps = ["pt", "gn"]
+    deps = ["pt", "gn", "vim"]
 
 [tasks.pt]
     envs = [
@@ -43,4 +42,9 @@
         ["ln", "-s", "${GNPATH}/git-id", "${HM_DEST}/bin/git-id"],
         ["ln", "-s", "${GNPATH}/git-list", "${HM_DEST}/bin/git-list"],
         ["ln", "-s", "${GNPATH}/git-number", "${HM_DEST}/bin/git-number"],
+    ]
+[tasks.vim]
+    cmds = [
+        ["curl", "-fLo", "${HM_DEST}/.vim/autoload/plug.vim", "--create-dirs", "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"],
+        ["curl", "-fLo", "~/.local/share/nvim/site/autoload/plug.vim", "--create-dirs", " https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"]
     ]
