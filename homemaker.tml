@@ -1,7 +1,7 @@
 [tasks.default]
     deps = ["tools"]
     cmds = [
-        ["mkdir", "-p", "${HM_DEST}/vimtmp"],
+        ["mkdir", "-p", "${HM_DEST}/vimtmp ${HM_DEST}/.config/{fish, nvim}"],
         ["curl", "-fLo", "${HM_DEST}/.vim/autoload/plug.vim", "--create-dirs", "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"],
     ]
     links = [
@@ -11,6 +11,11 @@
         # [".bashrc"],
         [".bash_aliases"],
         [".git-completion.bash.sh"],
+        [".config/nvim/init.vim"],
+        [".config/fish/functions"],
+        [".config/fish/fishfile"],
+        [".config/fish/conf.d"],
+        [".config/fish/completions"],
     ]
 
 [tasks.tools]
