@@ -25,8 +25,8 @@ syntax enable
 colorscheme seoul256
 
 let g:deoplete#enable_at_startup = 1
-let g:python_host_prog = "/home/kms/.config/nvim/py27/bin/python"
-let g:python3_host_prog = "/home/kms/.config/nvim/py36/bin/python"
+let g:python_host_prog = $HOME."/.config/nvim/py27/bin/python"
+let g:python3_host_prog = $HOME."/.config/nvim/py36/bin/python"
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
