@@ -19,12 +19,16 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'Shougo/denite.nvim'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 call plug#end()
 
 syntax enable
+filetype plugin on
 colorscheme seoul256
 
+let g:go_fmt_experimental=1
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:python_host_prog = $HOME."/.config/nvim/py27/bin/python"
 let g:python3_host_prog = $HOME."/.config/nvim/py36/bin/python"
 
