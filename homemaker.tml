@@ -4,6 +4,7 @@
         ["mkdir", "-p", "${HM_DEST}/vimtmp ${HM_DEST}/.config/{fish, nvim}"],
     ]
     links = [
+        [".envrc"],
         [".gitconfig"],
         [".tmux.conf"],
         [".vimrc"],

@@ -63,13 +63,14 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-fnr'
 Plug 'tpope/vim-commentary'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
-Plug 'fatih/vim-go'
-Plug 'pangloss/vim-javascript'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --gocode-completer' }
+" Plug 'fatih/vim-go'
+" Plug 'pangloss/vim-javascript'
 Plug 'w0rp/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'csexton/trailertrash.vim'
 Plug 'Shougo/denite.nvim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 syntax enable

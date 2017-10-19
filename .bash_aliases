@@ -19,8 +19,7 @@ alias bbcc='buildbot checkconfig'
 
 alias vi='/usr/bin/vim'
 
-alias cdw='cd /cygdrive/e/work/'
-alias cdw='cd /cygdrive/c/work/'
+alias cdw='cd ~/work/'
 alias cdappb='cdw ; cd b_mg_app'
 alias cdapp='cdw ; cd mg_app'
 alias cdtoo='cdw; cd mhtools'
