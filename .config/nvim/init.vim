@@ -33,7 +33,11 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:python_host_prog = $HOME."/.config/nvim/py27/bin/python"
 let g:python3_host_prog = $HOME."/.config/nvim/py36/bin/python"
-let g:server_addr = serverstart('/tmp/vim-server')
+
+" Start neovim server only once
+if empty(glob("/tmp/vim-server"))
+    let g:server_addr = serverstart('/tmp/vim-server')
+endif
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
