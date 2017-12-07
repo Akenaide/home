@@ -6,6 +6,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set completeopt-=preview
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --bin' }
@@ -20,6 +21,7 @@ Plug 'tpope/vim-commentary'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'Shougo/denite.nvim'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'w0rp/ale'
 call plug#end()
 
 syntax enable
@@ -31,6 +33,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:python_host_prog = $HOME."/.config/nvim/py27/bin/python"
 let g:python3_host_prog = $HOME."/.config/nvim/py36/bin/python"
+let g:server_addr = serverstart('/tmp/vim-server')
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
