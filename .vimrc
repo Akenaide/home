@@ -1,7 +1,5 @@
 filetype indent plugin on
 
-":colorscheme dw_green 
-
 set t_Co=256
 set nocompatible
 set ts=4
@@ -11,7 +9,6 @@ set expandtab
 set wildmode=longest,list,full
 set number
 set shiftround
-" set smartindent
 set ai
 set backspace=2
 set mouse=nv

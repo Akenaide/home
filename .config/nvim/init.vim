@@ -7,6 +7,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set completeopt-=preview
+set foldlevelstart=1
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --bin' }
