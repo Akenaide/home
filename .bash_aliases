@@ -5,6 +5,7 @@ alias vigit='vi ~/.gitconfig'
 alias viyay='vim /cygdrive/c/Users/KMS/Documents/task/yay.txt '
 alias giyay='gvim /cygdrive/c/Users/KMS/Documents/task/yay.txt '
 
+alias vivim="vim $HOME/.config/nvim/init.vim"
 alias ll='ls -la'
 alias lt='ls -ltra'
 alias l='ls -CF'
@@ -14,12 +15,14 @@ fbuilds(){
 }
 
 
+alias mc="minio-client $1"
 alias builds=fbuilds
 alias bbcc='buildbot checkconfig'
 
 alias vi='/usr/bin/vim'
 
-alias cdw='cd ~/work/'
+alias cdww='cd $1'
+alias cdw='cd $WORK'
 alias cdappb='cdw ; cd b_mg_app'
 alias cdapp='cdw ; cd mg_app'
 alias cdtoo='cdw; cd mhtools'

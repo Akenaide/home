@@ -53,8 +53,8 @@
 	default = current
 
 [user]
-        name = Akenaide
-        email = kevinms1@gmail.com
+    name = Akenaide
+    email = kevinms1@gmail.com
 
 [include]
     path = ~/.gitconfig.local
@@ -64,3 +64,8 @@
 	insteadOf = mhgit://
 [url "https://git.mhcomm.fr/"]
 	insteadOf = mhgitweb://
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

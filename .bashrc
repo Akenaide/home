@@ -153,4 +153,4 @@ _kms_complete_work() {
     __fzf_generic_path_completion _fzf_compgen_cdw
 }
 
-complete -F _kms_complete_work -o default -o bashdefault cdw
+complete -F _kms_complete_work -o default -o bashdefault cdww
