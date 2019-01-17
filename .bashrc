@@ -4,11 +4,11 @@
 
 export DISPLAY=:0.0
 export EDITOR="vim"
-export FZF_DEFAULT_COMMAND='pt -l -g .'
+# export FZF_DEFAULT_COMMAND='pt -l -g .'
 export GIT_COMMITTER_NAME="$USER"
 export GOPATH=~/work/go
 export NVM_DIR="$HOME/.nvm"
-export PATH="$HOME/.pyenv/bin:$HOME/bin:$GOPATH/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$HOME/bin:$GOPATH/bin:$PATH:$HOME/.pub-cache/bin"
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export TERM="screen-256color"
 export WORK="$HOME/work"
@@ -19,7 +19,6 @@ case $- in
       *) return;;
 esac
 
-shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -29,8 +28,6 @@ HISTFILESIZE=2000
 # See bash(1) for more options
 # append to the history file, don't overwrite it
 HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
-PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -138,7 +135,7 @@ eval "$(direnv hook bash)"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 _fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
+  fd --hidden --follow --exclude ".git" --exclude "*.pyc" . "$1"
 }
 
 _fzf_compgen_dir() {
@@ -146,7 +143,7 @@ _fzf_compgen_dir() {
 }
 
 _fzf_compgen_cdw() {
-  fd --type d -d 1 . $WORK 
+  fd --type d -d 1 . $WORK
 }
 
 _kms_complete_work() {
