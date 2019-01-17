@@ -11,7 +11,7 @@ set foldlevelstart=1
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Shougo/denite.nvim'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'csexton/trailertrash.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'editorconfig/editorconfig-vim'
@@ -28,8 +28,12 @@ Plug 'tpope/vim-commentary'
 Plug 'pseewald/vim-anyfold'
 " Plug 'w0rp/ale'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'zchee/deoplete-jedi'
-Plug 'natebosch/vim-lsc'
+" Plug 'zchee/deoplete-jedi'
+" Plug 'natebosch/vim-lsc'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 call plug#end()
 
 syntax enable
@@ -37,16 +41,22 @@ filetype plugin on
 colorscheme seoul256
 
 let g:go_fmt_experimental=1
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#auto_complete_delay = 500
-" let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#enable_at_startup = 1
+" let g:deoplete#auto_complete_delay = 200
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:python_host_prog = $HOME."/.config/nvim/py27/bin/python"
 let g:python3_host_prog = $HOME."/.config/nvim/py36/bin/python"
 
 " vim lsc config
-let g:lsc_server_commands = {'dart': 'dart_language_server'}
-let g:lsc_server_commands = {'python': 'pyls'}
-let g:lsc_auto_map = v:true " Use defaults
+" let g:lsc_server_commands = {'dart': 'dart_language_server'}
+" let g:lsc_server_commands = {'python': 'pyls'}
+" let g:lsc_server_commands = {'html': 'html-languageserver --stdio'}
+" let g:lsc_auto_map = v:true " Use defaults
+
+let g:LanguageClient_serverCommands = {
+\ 'python': ['pyls'],
+\ 'dart': ['dart_language_server'],
+\ }
 
 " Enable completion where available.
 " This setting must be set before ALE is loaded.
@@ -61,6 +71,7 @@ if empty(glob("/tmp/vim-server"))
     let g:server_addr = serverstart('/tmp/vim-server')
 endif
 
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> <F2> :<C-u>Denite grep:. -buffer-name=search-buffer<CR>
 map <C-F2> <F2><C-R><C-W><CR>
 nnoremap <silent> <C-O> :Denite file_rec<CR>
