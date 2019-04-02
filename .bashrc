@@ -9,6 +9,7 @@ export GIT_COMMITTER_NAME="$USER"
 export GOPATH=~/work/go
 export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.pyenv/bin:$HOME/bin:$GOPATH/bin:$PATH:$HOME/.pub-cache/bin"
+export PATH="$PATH:/usr/lib/dart/bin"
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export TERM="screen-256color"
 export WORK="$HOME/work"
@@ -151,3 +152,5 @@ _kms_complete_work() {
 }
 
 complete -F _kms_complete_work -o default -o bashdefault cdww
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

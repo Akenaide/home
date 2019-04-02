@@ -8,6 +8,8 @@ set softtabstop=4
 set completeopt-=preview
 " set fdm=indent
 set foldlevelstart=1
+set smartcase
+" set hidden
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Shougo/denite.nvim'
@@ -27,7 +29,9 @@ Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'tpope/vim-commentary'
 Plug 'pseewald/vim-anyfold'
 " Plug 'w0rp/ale'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+" Plug 'zchee/deoplete-go', { 'do': 'make'}
+" Plug 'Shougo/neocomplete.vim'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " Plug 'zchee/deoplete-jedi'
 " Plug 'natebosch/vim-lsc'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -39,9 +43,13 @@ call plug#end()
 syntax enable
 filetype plugin on
 colorscheme seoul256
+" Avoid annoying appear / disappear on error
+set signcolumn=yes
 
 let g:go_fmt_experimental=1
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_smart_case = 1
 " let g:deoplete#auto_complete_delay = 200
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:python_host_prog = $HOME."/.config/nvim/py27/bin/python"
@@ -54,7 +62,7 @@ let g:python3_host_prog = $HOME."/.config/nvim/py36/bin/python"
 " let g:lsc_auto_map = v:true " Use defaults
 
 let g:LanguageClient_serverCommands = {
-\ 'python': ['pyls'],
+\ 'python': [$HOME."/.config/nvim/py36/bin/pyls"],
 \ 'dart': ['dart_language_server'],
 \ }
 
@@ -64,6 +72,15 @@ let g:LanguageClient_serverCommands = {
 " let g:ale_linters = {
 " \   'python': ['pyls'],
 " \}
+"
+
+" https://github.com/neoclide/coc.nvim
+" config coc
+call coc#add_extension(
+            \ 'coc-json',
+            \ 'coc-python',
+            \ 'coc-gocode'
+            \)
 
 
 " Start neovim server only once
@@ -76,6 +93,7 @@ nnoremap <silent> <F2> :<C-u>Denite grep:. -buffer-name=search-buffer<CR>
 map <C-F2> <F2><C-R><C-W><CR>
 nnoremap <silent> <C-O> :Denite file_rec<CR>
 nnoremap <silent> <C-G> :ALENext<CR>
+inoremap <silent><expr> <c-n> coc#refresh()
 
 " Saner CTRL-L
 " By default, <c-l> clears and redraws the screen (like :redraw!). The following mapping does the same,
