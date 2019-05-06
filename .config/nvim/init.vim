@@ -9,11 +9,13 @@ set completeopt-=preview
 " set fdm=indent
 set foldlevelstart=1
 set smartcase
+set completeopt=noinsert,menuone,noselect
+" set completefunc=LanguageClient#complete
 " set hidden
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Shougo/denite.nvim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'csexton/trailertrash.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'editorconfig/editorconfig-vim'
@@ -28,10 +30,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'thiagoalessio/rainbow_levels.vim'
 Plug 'tpope/vim-commentary'
 Plug 'pseewald/vim-anyfold'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
 " Plug 'w0rp/ale'
 " Plug 'zchee/deoplete-go', { 'do': 'make'}
 " Plug 'Shougo/neocomplete.vim'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " Plug 'zchee/deoplete-jedi'
 " Plug 'natebosch/vim-lsc'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -46,12 +50,12 @@ colorscheme seoul256
 " Avoid annoying appear / disappear on error
 set signcolumn=yes
 
-let g:go_fmt_experimental=1
+" let g:go_fmt_experimental=1
 " let g:deoplete#enable_at_startup = 1
 " let g:neocomplete#enable_at_startup = 1
 " let g:neocomplete#enable_smart_case = 1
 " let g:deoplete#auto_complete_delay = 200
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+" let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:python_host_prog = $HOME."/.config/nvim/py27/bin/python"
 let g:python3_host_prog = $HOME."/.config/nvim/py36/bin/python"
 
@@ -63,6 +67,7 @@ let g:python3_host_prog = $HOME."/.config/nvim/py36/bin/python"
 
 let g:LanguageClient_serverCommands = {
 \ 'python': [$HOME."/.config/nvim/py36/bin/pyls"],
+\ 'go': ['gopls'],
 \ 'dart': ['dart_language_server'],
 \ }
 
@@ -76,11 +81,11 @@ let g:LanguageClient_serverCommands = {
 
 " https://github.com/neoclide/coc.nvim
 " config coc
-call coc#add_extension(
-            \ 'coc-json',
-            \ 'coc-python',
-            \ 'coc-gocode'
-            \)
+" call coc#add_extension(
+"             \ 'coc-json',
+"             \ 'coc-python',
+"             \ 'coc-gocode'
+"             \)
 
 
 " Start neovim server only once
@@ -91,9 +96,15 @@ endif
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> <F2> :<C-u>Denite grep:. -buffer-name=search-buffer<CR>
 map <C-F2> <F2><C-R><C-W><CR>
-nnoremap <silent> <C-O> :Denite file_rec<CR>
+nnoremap <silent> <C-O> :Denite file/rec<CR>
 nnoremap <silent> <C-G> :ALENext<CR>
-inoremap <silent><expr> <c-n> coc#refresh()
+" Run gofmt and goimports on save
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+
+" let g:mucomplete#enable_auto_at_startup = 1
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" inoremap <silent><expr> <c-n> coc#refresh()
 
 " Saner CTRL-L
 " By default, <c-l> clears and redraws the screen (like :redraw!). The following mapping does the same,
@@ -104,7 +115,7 @@ nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
 
 
 if executable('fd')
-    call denite#custom#var('file_rec', 'command',
+    call denite#custom#var('file/rec', 'command',
         \ ['fd', '--type', 'f', '.'])
     " Change mappings.
     call denite#custom#map(

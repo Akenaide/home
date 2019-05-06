@@ -1,7 +1,7 @@
 [tasks.default]
     deps = ["tools"]
     cmds = [
-        ["mkdir", "-p", "${HM_DEST}/vimtmp ${HM_DEST}/.config/{fish, nvim}"],
+        ["mkdir", "-p", "${HM_DEST}/vimtmp" "${HM_DEST}/.config/{fish, nvim}"],
     ]
     links = [
         [".envrc"],
