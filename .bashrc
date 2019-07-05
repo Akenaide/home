@@ -155,3 +155,6 @@ _kms_complete_work() {
 complete -F _kms_complete_work -o default -o bashdefault cdww
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# https://github.com/gsamokovarov/jump
+eval "$(jump shell)"
