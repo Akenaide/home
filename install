@@ -1,0 +1,13 @@
+#!/bin/bash
+
+FILE="homemaker_linux_amd64.tar.gz"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd /tmp
+
+# wget https://foosoft.net/projects/homemaker/dl/$FILE
+tar xf $FILE
+
+mkdir -p $HOME/bin
+mv /tmp/homemaker_linux_amd64/homemaker $HOME/bin
+
+$HOME/bin/homemaker -verbose $DIR/homemaker.tml $DIR
