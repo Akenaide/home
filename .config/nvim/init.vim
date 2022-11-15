@@ -1,71 +1,68 @@
-set number
+syntax enable
+set wildmenu
 set wildmode=longest,list,full
-" set mouse=nv
-set smartcase
-" set completeopt=noinsert,menuone,noselect
+set number
+set autoindent
+set ruler
+set ts=4
+set sw=4
+set sts=4
+
 " Avoid annoying appear / disappear on error
 set signcolumn=yes
 
-set expandtab
-" set tabstop=4
-" set shiftwidth=4
-" set softtabstop=4
+let g:mapleader = ' '
+let g:python3_host_prog = $HOME."/.pyenv/versions/3.8.12/envs/py3/bin/python"
 
-let g:python_host_prog = $HOME."/.config/nvim/py27/bin/python"
-let g:python3_host_prog = $HOME."/.config/nvim/py36/bin/python"
-
-call plug#begin('~/.config/nvim/plugged')
-Plug 'junegunn/seoul256.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'ncm2/ncm2'
-Plug 'fatih/vim-go'
-Plug 'roxma/nvim-yarp'
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
+call plug#begin(data_dir)
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'junegunn/vim-fnr'
-Plug 'junegunn/vim-slash'
-Plug 'junegunn/vim-pseudocl' " Deps for vim fnr
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install --bin' }
-Plug 'junegunn/vim-fnr'
+Plug 'folke/which-key.nvim'
 Plug 'tpope/vim-commentary'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'junegunn/seoul256.vim'
+
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'neovim/nvim-lspconfig'
+Plug 'tamago324/nlsp-settings.nvim'
+Plug 'psf/black', { 'branch': 'stable' }
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+"
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/trouble.nvim'
+
+Plug 'liuchengxu/vista.vim'
+
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
 
-colorscheme seoul256
+set completeopt=menu,menuone,noselect
 
-let g:LanguageClient_serverCommands = {
-\ 'python': [$HOME."/.config/nvim/py36/bin/pyls"],
-\ 'go': ['gopls'],
-\ 'dart': ['dart_language_server'],
-\ }
+colo seoul256
 
+lua << EOF
+require("which-key").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+    }
+require("nvim-lsp-installer").setup {}
+require("lsp")
+require("trouble").setup {}
+EOF
 
-" Start neovim server only once
-if empty(glob("/tmp/vim-server"))
-    let g:server_addr = serverstart('/tmp/vim-server')
-endif
-
-autocmd BufEnter * call ncm2#enable_for_buffer()
-au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-au User Ncm2PopupClose set completeopt=menuone
-
-" FZF config
-nnoremap <silent> <C-O> :Files <CR>
-nnoremap <silent> <F2> :Ag 
-" search work under cursor
-" map <c-F12> <F2><C-R> <C-W><C-R>
-
-" Run gofmt and goimports on save
-" autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
-au FileType go nmap <leader>i <Plug>(go-install)
-
-" Saner CTRL-L
-" By default, <c-l> clears and redraws the screen (like :redraw!). The following mapping does the same,
-" plus de-highlighting the matches found via /, ? etc., plus fixing syntax highlighting (sometimes Vim loses highlighting due
-" to complex highlighting rules), plus force updating the syntax highlighting in diff mode:
-
-nnoremap <leader>l :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+" Open :Files
+nmap <leader>p <cmd>Files<cr> 
+" Search tag under cursor
+nmap <leader>t :Tags <C-r><C-w><cr>
