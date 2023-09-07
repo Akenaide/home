@@ -46,3 +46,16 @@ Create an alias tmux = tmux -2
 
 Or add this to .tmux.conf
 set-option -g default-terminal "screen-256color"
+
+Various tools
+----
+
+FZF + git: https://github.com/wfxr/forgit
+
+Nvim version manager: https://github.com/MordechaiHadad/bob
+
+Ripgrep: https://github.com/BurntSushi/ripgrep
+
+Cat++: https://github.com/sharkdp/bat
+
+Find++: https://github.com/sharkdp/fd
