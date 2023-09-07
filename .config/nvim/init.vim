@@ -4,19 +4,21 @@ set wildmode=longest,list,full
 set number
 set autoindent
 set ruler
-set ts=4
-set sw=4
-set sts=4
+set tabstop=4
+set shiftwidth=4
+set expandtab
+" set sts=4
 
 " Avoid annoying appear / disappear on error
 set signcolumn=yes
 
 let g:mapleader = ' '
-let g:python3_host_prog = $HOME."/.pyenv/versions/3.8.12/envs/py3/bin/python"
+let g:python3_host_prog = $HOME."/.pyenv/versions/3.11.5/envs/py3/bin/python"
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin(data_dir)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -24,10 +26,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'folke/which-key.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/seoul256.vim'
+colo seoul256
 
-Plug 'williamboman/nvim-lsp-installer'
+" Plug 'williamboman/nvim-lsp-installer'
+" :MasonUpdate updates registry contents
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'tamago324/nlsp-settings.nvim'
+
+" Plug 'tamago324/nlsp-settings.nvim'
 Plug 'psf/black', { 'branch': 'stable' }
 
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -43,26 +50,34 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/trouble.nvim'
 
 Plug 'liuchengxu/vista.vim'
+" Plug 'karloskar/poetry-nvim'
 
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+" Go
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua'
 call plug#end()
 
 set completeopt=menu,menuone,noselect
 
-colo seoul256
-
-lua << EOF
-require("which-key").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-    }
-require("nvim-lsp-installer").setup {}
-require("lsp")
-require("trouble").setup {}
-EOF
-
 " Open :Files
-nmap <leader>p <cmd>Files<cr> 
+nmap <leader>p <cmd>Files<cr>
 " Search tag under cursor
-nmap <leader>t :Tags <C-r><C-w><cr>
+nmap <leader>tu <cmd>Tags <C-r><C-w><cr>
+nmap <leader>tt <cmd>Tags <cr>
+nmap <leader>tb <cmd>BTags <cr>
+" Open Buffer
+nmap <leader>b :Buffers <cr>
+
+" Trouble
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+
+" custome preview for FZF
+let g:fzf_preview_window = ['up,40%', 'ctrl-/']
