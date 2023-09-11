@@ -140,16 +140,12 @@ if ! shopt -oq posix; then
   fi
 fi
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 eval "$(starship init bash)"
 export GO111MODULE=on
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-source ~/bin/forgit/forgit.plugin.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -157,12 +153,10 @@ export NVM_DIR="$HOME/.nvm"
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 
-export PATH="$PATH:~/bin/forgit/bin"
 export MCFLY_RESULTS_SORT=LAST_RUN
 export MCFLY_LIGHT=TRUE
 
 eval "$(mcfly init bash)"
-eval "$(direnv hook bash)"
 # If there are multiple matches for completion, Tab should cycle through them
 bind 'TAB:menu-complete'
 # And Shift-Tab should cycle backwards

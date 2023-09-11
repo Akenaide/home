@@ -24,5 +24,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 vim.keymap.set("n", "<leader>xn", function() require("trouble").next({skip_groups = true, jump = true}) end);
 vim.keymap.set("n", "<leader>xp", function() require("trouble").previous({skip_groups = true, jump = true}) end);
-
-

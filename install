@@ -1,13 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-FILE="homemaker_linux_amd64.tar.gz"
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-cd /tmp
+set -e
 
-# wget https://foosoft.net/projects/homemaker/dl/$FILE
-tar xf $FILE
+CONFIG="install.conf.yaml"
+DOTBOT_DIR="dotbot"
 
-mkdir -p $HOME/bin
-mv /tmp/homemaker_linux_amd64/homemaker $HOME/bin
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-$HOME/bin/homemaker -verbose $DIR/homemaker.tml $DIR
+cd "${BASEDIR}"
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
+
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -v -d "${BASEDIR}" --plugin-dir dotbot-rust --plugin-dir dotbot-brew -c "${CONFIG}" "${@}"

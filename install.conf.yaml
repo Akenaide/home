@@ -1,0 +1,47 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.tmux.conf:
+    ~/.bashrc: .bashrcdesk
+    ~/.gitconfig:
+    ~/.git-completion.bash.sh:
+    ~/.profile:
+    ~/.config/nvim: .config/nvim
+
+- create:
+  - ~/.config
+
+- brew:
+  - gcc
+  - pyenv
+  - pyenv-virtualenv
+  - tmux
+  - ripgrep
+  - fzf
+  - bat
+  - fd
+  - forgit
+  - rust
+  - mcfly
+  - starship
+  - git-delta
+  - xclip
+  - go
+  - dart-sdk
+  - node
+
+- cargo:
+  - bob-nvim
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - yes | $HOMEBREW_PREFIX/opt/fzf/install
+  - bob use stable
+  - pyenv install --skip-existing 3.11 && pyenv global 3.11
+  - sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  - ./vimpython.sh
